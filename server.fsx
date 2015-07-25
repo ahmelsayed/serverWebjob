@@ -21,10 +21,10 @@ let port =
     match Environment.GetEnvironmentVariable("WEBJOB_PORT") with
     | null -> "8083"
     | x -> x
-    |> Sockets.Port.Parse 
+    |> Sockets.Port.Parse
 let webConfig = { defaultConfig with bindings = [ HttpBinding.mk HTTP IPAddress.Loopback port ] }
 
-type WebJobBinding = { Name: string; value: string }
+type WebJobBinding = { Name: string; Value: string }
 
 let handleAll =
     request (fun r ->

@@ -24,12 +24,12 @@ let port =
     |> Sockets.Port.Parse
 let webConfig = { defaultConfig with bindings = [ HttpBinding.mk HTTP IPAddress.Loopback port ] }
 
-type WebJobBinding = { Name: string; Value: string }
+type Article = { Name: string; Excerpt: string }
 
 let handleAll =
     request (fun r ->
         let str = Encoding.UTF8.GetString (r.rawForm)
-        let content = JsonConvert.DeserializeObject<WebJobBinding>(str)
+        let content = JsonConvert.DeserializeObject<Article>(str)
         printfn "%A" content
         OK "Processed  Request")
 

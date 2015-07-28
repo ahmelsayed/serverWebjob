@@ -28,6 +28,7 @@ type Article = { Name: string; Excerpt: string }
 
 let handleAll =
     request (fun r ->
+        printfn "%A" r.url
         let str = Encoding.UTF8.GetString (r.rawForm)
         let content = JsonConvert.DeserializeObject<Article>(str)
         printfn "%A" content
